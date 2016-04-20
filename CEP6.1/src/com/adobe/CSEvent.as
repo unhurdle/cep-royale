@@ -25,5 +25,9 @@ package com.adobe {
 		
 		public static const GLOBAL:String = "GLOBAL";
 		public static const APPLICATION:String = "APPLICATION";
+		public static const FLYOUT_MENU_CLICKED:String = "com.adobe.csxs.events.flyoutMenuClicked";
+		public static const FLYOUT_MENU_OPENED:String = "com.adobe.csxs.events.flyoutMenuOpened";
+		public static const FLYOUT_MENU_CLOSED:String = "com.adobe.csxs.events.flyoutMenuClosed";
+		public static const PANEL_WINDOW_STATUS_CHANGE:String = "com.adobe.csxs.events.panelWindowStatusChanged";
 	}
 }
