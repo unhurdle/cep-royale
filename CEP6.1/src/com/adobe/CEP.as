@@ -1,9 +1,15 @@
 package com.adobe {
+	import com.adobe.cep.Util;
+	import com.adobe.cep.Encoding;
+	import com.adobe.cep.Process;
+	import com.adobe.cep.FS;
 	/**
 	 * @author harbs
 	 */
-	public class CEP {
-		/** EvalScript error message */
-		static public const EvalScript_ErrMessage : String = "EvalScript error.";
+	public class cep {
+		public static var fs:FS;
+		public static var process:Process;
+		public static var encoding:Encoding;
+		public static var util:Util;
 	}
 }
