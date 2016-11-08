@@ -1,4 +1,4 @@
-package com.adobe.vulcan {
+package  {
 	/**
 	 * @author harbs
 	 */
@@ -28,6 +28,7 @@ package com.adobe.vulcan {
 		 * @return True if the app can be launched, false otherwise.
 		 */
 		static public function launchApp(targetSpecifier : String, focus : String, cmdLine : String) : Boolean {
+			targetSpecifier;focus;cmdLine;
 			return true;
 		}
 
@@ -46,6 +47,7 @@ package com.adobe.vulcan {
 		 * @return True if the app is running, false otherwise.
 		 */
 		static public function isAppRunning(targetSpecifier : String) : Boolean {
+			targetSpecifier;
 			return true;
 		}
 
@@ -64,6 +66,7 @@ package com.adobe.vulcan {
 		 * @return True if the app is installed, false otherwise.
 		 */
 		static public function isAppInstalled(targetSpecifier : String) : Boolean {
+			targetSpecifier;
 			return true;
 		}
 
@@ -82,6 +85,7 @@ package com.adobe.vulcan {
 		 * @return The path string if the application is found, "" otherwise.
 		 */
 		static public function getAppPath(targetSpecifier : String) : String {
+			targetSpecifier;
 			return "";
 		}
 
@@ -124,6 +128,7 @@ package com.adobe.vulcan {
 		 * @return                A string containing the message payload.
 		 */
 		static public function getPayload(vulcanMessage : String) : Object {
+			vulcanMessage;
 			return null;
 		}
 	}

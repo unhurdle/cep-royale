@@ -1,4 +1,6 @@
 package com.adobe.cep {
+	import com.adobe.cep.CepColor;
+	import com.adobe.cep.UIColor;
 	/**
 	 * @author harbs
 	 */

@@ -1,4 +1,4 @@
-package com.adobe.vulcan {
+package  {
 	/**
 	 * @author harbs
 	 */
@@ -30,6 +30,7 @@ package com.adobe.vulcan {
 		 * @return True if the app can be launched, false otherwise.
 		 */
 		public function launchApp(targetSpecifier : String, focus : Boolean=false, cmdLine : String=null) : Boolean {
+			targetSpecifier;focus;cmdLine;
 			return true;
 		}
 
@@ -47,7 +48,7 @@ package com.adobe.vulcan {
 		 *        In other platforms there is no such issue, so we can use "photoshop" or "photoshop-70" as specifier.
 		 * @return True if the app is running, false otherwise.
 		 */
-		public function isAppRunning(targetSpecifier : String) : Boolean {return true;}
+		public function isAppRunning(targetSpecifier : String) : Boolean {targetSpecifier;return true;}
 
 		/**
 		 * Checks whether a CC application is installed on the local machine.
@@ -63,7 +64,7 @@ package com.adobe.vulcan {
 		 *        In other platforms there is no such issue, so we can use "photoshop" or "photoshop-70" as specifier.
 		 * @return True if the app is installed, false otherwise.
 		 */
-		public function isAppInstalled(targetSpecifier : String) : Boolean {return true;}
+		public function isAppInstalled(targetSpecifier : String) : Boolean {targetSpecifier;return true;}
 
 		/**
 		 * Retrieves the local install path of a CC application.
@@ -79,7 +80,7 @@ package com.adobe.vulcan {
 		 *        In other platforms there is no such issue, so we can use "photoshop" or "photoshop-70" as specifier.
 		 * @return The path string if the application is found, "" otherwise.
 		 */
-		public function getAppPath(targetSpecifier : String) : String {return "";}
+		public function getAppPath(targetSpecifier : String) : String {targetSpecifier;return "";}
 
 		/**
 		 * Registers a message listener callback function for a Vulcan message.
@@ -120,6 +121,7 @@ package com.adobe.vulcan {
 		 * @return                A string containing the message payload.
 		 */
 		public function getPayload(vulcanMessage :VulcanMessage) : String {
+			vulcanMessage;
 			return null;
 		}
 	}

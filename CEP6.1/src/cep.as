@@ -1,4 +1,4 @@
-package com.adobe {
+package  {
 	import com.adobe.cep.Util;
 	import com.adobe.cep.Encoding;
 	import com.adobe.cep.Process;

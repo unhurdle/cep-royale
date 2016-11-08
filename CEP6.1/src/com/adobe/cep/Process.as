@@ -43,7 +43,7 @@ package com.adobe.cep {
 		 *          <br>ERR_INVALID_PROCESS_ID </li></ul>
 		 **/
 		public function stdout(pid : int, callback : Function) : Object {
-			return null;
+			pid;return null;
 		};
 
 		/**
@@ -59,8 +59,8 @@ package com.adobe.cep {
 		 *          <br>ERR_INVALID_PARAMS
 		 *          <br>ERR_INVALID_PROCESS_ID </li></ul>
 		 **/
-		public function stderr(pid : int, callback : Function) {
-			return null;
+		public function stderr(pid : int, callback : Function):Object {
+			pid;return null;
 		};
 
 		/**
@@ -76,8 +76,8 @@ package com.adobe.cep {
 		 *          <br>ERR_INVALID_PARAMS
 		 *          <br>ERR_INVALID_PROCESS_ID </li></ul>
 		 **/
-		public function stdin(pid : int, data : String) {
-			return null;
+		public function stdin(pid : int, data : String):Object {
+			pid;data;return null;
 		};
 
 		/**
@@ -94,7 +94,7 @@ package com.adobe.cep {
 		 *          <br>ERR_INVALID_PROCESS_ID </li></ul>
 		 **/
 		public function getWorkingDirectory(pid : int) : Object {
-			return null;
+			pid;return null;
 		};
 
 		/**
@@ -109,8 +109,8 @@ package com.adobe.cep {
 		 *          <br>ERR_INVALID_PARAMS
 		 *          <br>ERR_INVALID_PROCESS_ID </li></ul>
 		 **/
-		public function waitfor(pid : int) {
-			return null;
+		public function waitfor(pid : int):Object {
+			pid;return null;
 		};
 
 		/**
@@ -126,8 +126,8 @@ package com.adobe.cep {
 		 *          <br>ERR_INVALID_PARAMS
 		 *          <br>ERR_INVALID_PROCESS_ID </li></ul>
 		 **/
-		public function onquit(pid : int, callback : Function) {
-			return null;
+		public function onquit(pid : int, callback : Function):Object {
+			pid;return null;
 		};
 
 		/**
@@ -144,7 +144,7 @@ package com.adobe.cep {
 		 *          <br>ERR_INVALID_PROCESS_ID </li></ul>
 		 **/
 		public function isRunning(pid : int) : Object {
-			return null;
+			pid;return null;
 		};
 
 		/**
@@ -160,7 +160,7 @@ package com.adobe.cep {
 		 *          <br>ERR_INVALID_PROCESS_ID </li></ul>
 		 **/
 		public function terminate(pid : int) : Object {
-			return null;
+			pid;return null;
 		};
 	}
 }

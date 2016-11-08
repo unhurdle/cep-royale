@@ -1,4 +1,4 @@
-package com.adobe.agora {
+package  {
 	/**
 	 * @author harbs
 	 */

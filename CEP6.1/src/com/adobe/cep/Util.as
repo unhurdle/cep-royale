@@ -29,7 +29,7 @@ package com.adobe.cep {
 		 *          <br>ERR_INVALID_PARAMS</li></ul>
 		 **/
 		public function openURLInDefaultBrowser(url : String) : Object {
-			return null;
+			url;return null;
 		};
 
 		/**
@@ -62,7 +62,7 @@ package com.adobe.cep {
 		 *      </ul>
 		 **/
 		public function storeProxyCredentials(username : String, password : String) : Object {
-			return null;
+			username;password;return null;
 		};
 	}
 }

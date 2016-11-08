@@ -1,4 +1,4 @@
-package com.adobe.cep {
+package {
 	/**
 	 * @author harbs
 	 */
@@ -21,7 +21,7 @@ package com.adobe.cep {
 		public var scope : String;
 		public var appId : String;
 		public var extensionId : String;
-		public var data : Object;
+		public var data : String;
 		
 		public static const GLOBAL:String = "GLOBAL";
 		public static const APPLICATION:String = "APPLICATION";
