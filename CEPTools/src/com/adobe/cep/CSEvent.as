@@ -1,4 +1,4 @@
-package {
+package com.adobe.cep{
 	/**
 	 * @author harbs
 	 */
@@ -15,13 +15,18 @@ package {
 		 * @return A new \c CSEvent object
 		 */
 		function CSEvent(type : String = "", scope : String = "", appId : String = "", extensionId : String = "") {
+			this.type = type;
+			this.scope = scope || "GLOBAL";
+			this.appId = appId;
+			this.extensionId = extensionId;
+			
 		}
 
 		public var type : String;
 		public var scope : String;
 		public var appId : String;
 		public var extensionId : String;
-		public var data : String;
+		public var data : * = "";
 		
 		public static const GLOBAL:String = "GLOBAL";
 		public static const APPLICATION:String = "APPLICATION";

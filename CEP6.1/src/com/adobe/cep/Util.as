@@ -28,7 +28,7 @@ package com.adobe.cep {
 		 *          <br>ERR_UNKNOWN
 		 *          <br>ERR_INVALID_PARAMS</li></ul>
 		 **/
-		public function openURLInDefaultBrowser(url : String) : Object {
+		public function openURLInDefaultBrowser(url : String) : int {
 			url;return null;
 		};
 

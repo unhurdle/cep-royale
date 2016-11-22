@@ -18,6 +18,10 @@ package com.adobe.cep {
 		 * @return A new RGBColor object.
 		 */
 		function CepColor(red : Number=0, green : Number=0, blue : Number=0, alpha : Number=0) {
+		    this.red = red;
+    		this.green = green;
+    		this.blue = blue;
+    		this.alpha = alpha;
 		}
 
 		public var red : Number;

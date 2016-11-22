@@ -70,7 +70,7 @@ package com.adobe.cep {
 		 *          <br>ERR_INVALID_PARAMS </li>
 		 *      </ul>
 		 **/
-		public function showOpenDialog(allowMultipleSelection : Boolean, chooseDirectory : Boolean, title : String, initialPath : String, fileTypes : Array) : Object {
+		public function showOpenDialog(allowMultipleSelection : Boolean, chooseDirectory : Boolean, title : String, initialPath : String = null, fileTypes : Array = null) : Object {
 			allowMultipleSelection;chooseDirectory;title;initialPath;fileTypes;
 			return null;
 		}
@@ -100,7 +100,7 @@ package com.adobe.cep {
 		 *          <br>ERR_INVALID_PARAMS </li>
 		 *      </ul>
 		 **/
-		public function showOpenDialogEx(allowMultipleSelection : Boolean, chooseDirectory : Boolean, title : String, initialPath : String, fileTypes : Array, friendlyFilePrefix : String, prompt : String) : Object {
+		public function showOpenDialogEx(allowMultipleSelection : Boolean, chooseDirectory : Boolean, title : String, initialPath : String = null, fileTypes : Array = null, friendlyFilePrefix : String = null, prompt : String = null) : Object {
 			allowMultipleSelection;chooseDirectory;title;initialPath;fileTypes;friendlyFilePrefix;prompt;
 			return null;
 		}
@@ -128,7 +128,7 @@ package com.adobe.cep {
 		 *          <br>ERR_INVALID_PARAMS </li>
 		 *      </ul>
 		 **/
-		public function showSaveDialogEx(title : String, initialPath : String, fileTypes : Array, defaultName : String, friendlyFilePrefix : String, prompt : String, nameFieldLabel : String) : Object {
+		public function showSaveDialogEx(title : String, initialPath : String = null, fileTypes : Array = null, defaultName : String = null, friendlyFilePrefix : String = null, prompt : String = null, nameFieldLabel : String = null) : Object {
 			title;initialPath;fileTypes;defaultName;friendlyFilePrefix;prompt;nameFieldLabel;
 			return null;
 		}

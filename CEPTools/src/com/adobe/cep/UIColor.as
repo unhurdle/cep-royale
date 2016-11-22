@@ -15,11 +15,14 @@ package com.adobe.cep {
 		 *
 		 * @return A new \c UIColor object.
 		 */
-		function UIColor(type : String = null, antialiasLevel : Number = 0, color : CepColor = null) {
+		function UIColor(type : String = null, antialiasLevel : Number = 0, color : Object = null) {
+		    this.type = type;
+    		this.antialiasLevel = antialiasLevel;
+		    this.color = color;
 		}
 
 		public var type : String;
 		public var antialiasLevel : Number;
-		public var color : CepColor;
+		public var color : Object;
 	}
 }

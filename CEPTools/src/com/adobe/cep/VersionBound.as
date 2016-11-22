@@ -14,6 +14,8 @@ package com.adobe.cep {
 		 * @return A new \c VersionBound object.
 		 */
 		function VersionBound(version : Version = null, inclusive : Boolean = false) {
+			this.version = version;
+			this.inclusive = inclusive;
 		}
 
 		public var version : Version;

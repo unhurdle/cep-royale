@@ -15,6 +15,8 @@ package com.adobe.cep {
 		 * @return A new \c Runtime object.
 		 */
 		function Runtime(name : String, versionRange : VersionRange) {
+			this.name = name;
+			this.versionRange = versionRange;
 		}
 
 		public var name : String;

@@ -1,4 +1,4 @@
-package  {
+package  com.adobe.vulcan{
 	/**
 	 * @author harbs
 	 */

@@ -16,6 +16,8 @@ package com.adobe.cep {
 		 * @return A new \c Direction object.
 		 */
 		function Direction(x : Number = 0, y : Number = 0) {
+		    this.x = x;
+    		this.y = y;
 		}
 
 		public var x : Number;

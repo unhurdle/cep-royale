@@ -28,6 +28,22 @@ package com.adobe.cep {
 		 * @return A new \c Extension object.
 		 */
 		function Extension(id : String = "", name : String = "", mainPath : String = "", basePath : String = "", windowType : String = "", width : Number = 0, height : Number = 0, minWidth : Number = 0, minHeight : Number = 0, maxWidth : Number = 0, maxHeight : Number = 0, defaultExtensionDataXml : String = "", specialExtensionDataXml : String = "", requiredRuntimeList : Array = null, isAutoVisible : Boolean = false, isPluginExtension : Boolean = false) {
+		    this.id = id;
+    		this.name = name;
+    		this.mainPath = mainPath;
+    		this.basePath = basePath;
+    		this.windowType = windowType;
+    		this.width = width;
+    		this.height = height;
+    		this.minWidth = minWidth;
+    		this.minHeight = minHeight;
+    		this.maxWidth = maxWidth;
+    		this.maxHeight = maxHeight;
+    		this.defaultExtensionDataXml = defaultExtensionDataXml;
+    		this.specialExtensionDataXml = specialExtensionDataXml;
+    		this.requiredRuntimeList = requiredRuntimeList;
+    		this.isAutoVisible = isAutoVisible;
+    		this.isPluginExtension = isPluginExtension;
 		}
 
 		public var id : String;
