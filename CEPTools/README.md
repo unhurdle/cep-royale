@@ -1,5 +1,5 @@
 # CEPTools
-CEPTools is designed to replace the Adobe js files that need to be included in HTML CEP extensions. It loosly ports the Javascript code in CSInterface.js, Vulcan.js, AgoraLib.js, etc.
+CEPTools is designed to replace the Adobe js files that need to be included in HTML CEP extensions. It loosely ports the Javascript code in CSInterface.js, Vulcan.js, AgoraLib.js, etc.
 
 These files are really just convenience methods for accessing the underlying `cep` and `__adobe_cep__` global objects which are injected into every HTML CEP extension.
 
