@@ -29,7 +29,7 @@
     
     <property name="target.name" value="${ant.project.name}.swc" />
     
-    <target name="main" depends="clean,check-compiler,compile" description="Full build of ${ant.project.name}.swc">
+    <target name="main" depends="clean,check-compiler,compile-js-swc,compile-asjs" description="Full build of ${ant.project.name}.swc">
     </target>
     
     <target name="compile-js">
@@ -53,11 +53,6 @@
     </target>
     
     <target name="clean">
-        <delete failonerror="false">
-            <fileset dir="${FLEXJS_HOME}/frameworks/libs">
-                <include name="${target.name}"/>
-            </fileset>
-        </delete>
         <delete failonerror="false" includeemptydirs="true">
             <fileset dir="${basedir}/target">
                 <include name="**/**"/>
@@ -70,23 +65,40 @@
         <ant dir="src/test/flex" target="clean"/>
     </target>
     
-    <target name="compile" description="Compiles .as files into .swc">
-        <echo message="Compiling libs/${ant.project.name}.swc"/>
+    <target name="compile-asjs" depends="check-compiler">
+        <echo message="Cross-compiling ${target.name}"/>
+        <echo message="FALCONJX_COMPC: ${FALCONJX_COMPC}"/>
+        <mkdir dir="${basedir}/target/generated-sources/flexjs"/>
+        <java jar="${FALCONJX_COMPC}" fork="true" >
+            <jvmarg value="-Xmx384m" />
+            <jvmarg value="-Dsun.io.useCanonCaches=false" />
+            <jvmarg value="-Dflexcompiler=${FLEXJS_HOME}" />
+            <jvmarg value="-Dflexlib=${FLEXJS_HOME}/frameworks" />
+            <arg value="+flexlib=${FLEX_HOME}/frameworks" />
+            <arg value="-js-output-type=FLEXJS" />
+            <arg value="-compiler.strict-xml=true" />
+            <arg value="-keep-asdoc" /><!-- allows compiler to see @flexjsignorecoercion annotations -->
+            <arg value="-output=${basedir}/target/${target.name}" />
+            <arg value="-load-config=${basedir}/compile-config.xml" />
+        </java>
+        <delete dir="target/generated-sources"/>
+    </target>
+    
+    <target name="compile-js-swc" description="Compiles .as files into .swc used for cross-compiling other projects">
+        <echo message="Compiling target/${target.name}"/>
         <echo message="FLEX_HOME: ${FLEX_HOME}"/>
         <echo message="FALCON_HOME: ${FALCON_HOME}"/>
+        <mkdir dir="${basedir}/target"/>
         
         <compc fork="true"
             output="${basedir}/target/${target.name}">
             <jvmarg line="${compc.jvm.args}"/>
+            <arg value="-compiler.strict-xml=true" />
             <load-config filename="${basedir}/compile-config.xml" />
-            <arg value="+playerglobal.version=${playerglobal.version}" />
-            <arg value="+env.AIR_HOME=${env.AIR_HOME}" />
-            <arg value="-define=COMPILE::SWF,true" />
-            <arg value="-define=COMPILE::JS,false" />
         </compc>
     </target>
     
-    <target name="check-compiler" depends="check-falcon-home">
+    <target name="check-compiler" depends="check-falcon-home, check-falconjx-home">
         <path id="lib.path">
             <fileset dir="${FALCON_HOME}/lib" includes="falcon-flexTasks.jar"/>
         </path>
@@ -96,20 +108,19 @@
     <target name="check-falcon-home" unless="FALCON_HOME"
         description="Check FALCON_HOME is a directory.">
         
-        <echo message="FALCON_HOME is ${env.FALCON_HOME}"/>
+        <property name="FALCON_HOME" value="${FLEXJS_HOME}"/>
+    </target>
+    
+    <target name="check-falconjx-home" unless="FALCONJX_HOME"
+        description="Check FALCON_HOME is a directory.">
         
-        <available file="${env.FALCON_HOME}/lib/falcon-mxmlc.jar"
+        <available file="${FLEXJS_HOME}/js/lib/compc.jar"
         type="file"
-        property="FALCON_HOME"
-        value="${env.FALCON_HOME}"/>
+        property="FALCONJX_COMPC"
+        value="${FLEXJS_HOME}/js/lib/compc.jar"/>
         
-        <available file="${FLEXJS_HOME}/../flex-falcon/compiler/lib/falcon-mxmlc.jar"
-        type="file"
-        property="FALCON_HOME"
-        value="${FLEXJS_HOME}/../flex-falcon/compiler"/>
-        
-        <fail message="FALCON_HOME must be set to a folder with a lib sub-folder containing falcon-mxmlc.jar such as the compiler folder in flex-falcon repo or a FlexJS SDK folder"
-        unless="FALCON_HOME"/>
+        <fail message="cannot find js/lib/compc.jar"
+        unless="FALCONJX_COMPC"/>
     </target>
     
 </project>

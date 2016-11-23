@@ -22,7 +22,6 @@
         <accessible>false</accessible>
         
         <external-library-path>
-            <path-element>${env.AIR_HOME}/frameworks/libs/air/airglobal.swc</path-element>
             <path-element>typedefs/js.swc</path-element>
             <path-element>lib/CEP.swc</path-element>
         </external-library-path>
@@ -57,8 +56,6 @@
     <include-classes>
         <class>CEPTools</class>
     </include-classes>
-    
-    <target-player>${playerglobal.version}</target-player>
-	
+    	
 
 </flex-config>
