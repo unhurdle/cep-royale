@@ -15,10 +15,10 @@ package com.adobe.cep {
 		 *
 		 * @return MenuItemStatus object.
 		 */
-		function MenuItemStatus(menuItemLabel : String = "", enabled : Boolean = false, checked : Boolean = false) {
-			this.menuItemLabel = menuItemLabel;
-			this.enabled = enabled;
-			this.checked = checked;
+		function MenuItemStatus(info:Object) {
+			this.menuItemLabel = info.menuItemLabel;
+			this.enabled = info.enabled;
+			this.checked = info.checked;
 		}
 
 		public var menuItemLabel : String;

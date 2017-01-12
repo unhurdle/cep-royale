@@ -3,6 +3,7 @@ package com.adobe.cep {
 	/**
 	 * @author harbs
 	 */
+	
 	public class CSInterface {
 		// ------------------------------ CSInterface ----------------------------------
 		/**
@@ -46,22 +47,27 @@ package com.adobe.cep {
 			}
 			return _cepGlobal;
 		}
+
+		private static var _hostEnvironment:HostEnvironment;
+		public static function get hostEnvironment():HostEnvironment{
+			if(!_hostEnvironment){
+				getHostEnvironment();
+			}
+			return _hostEnvironment;
+		}
+
 		/**
-		 * @flexjsignorecoercion HostEnvironment
-		 */
-		public static var hostEnvironment:HostEnvironment = JSON.parse(cepGlobal.getHostEnvironment()) as HostEnvironment;
-		/**
-		 * @flexjsignorecoercion HostEnvironment
+		 * @flexjsignorecoercion com.adobe.cep.HostEnvironment
 		 */
 		public static function getHostEnvironment() : HostEnvironment{
-			hostEnvironment = JSON.parse(cepGlobal.getHostEnvironment()) as HostEnvironment;
-			return hostEnvironment;
+			_hostEnvironment = new HostEnvironment(JSON.parse(cepGlobal["getHostEnvironment"]()));
+			return _hostEnvironment;
 		}
 
 
 		/** Closes this extension. */
 		public function closeExtension() : void {
-			cepGlobal.closeExtension();
+			cepGlobal["closeExtension"]();
 		}
 
 		/**
@@ -72,7 +78,7 @@ package com.adobe.cep {
 		 * @return The platform-specific system path string.
 		 */
 		public static function getSystemPath(pathType : String) : String {
-			var path:String = decodeURI(cepGlobal.getSystemPath(pathType));
+			var path:String = decodeURI(cepGlobal["getSystemPath"](pathType));
 			var osVer:String = getOSInformation();
 			if (osVer.indexOf("Windows") >= 0)
 			{
@@ -98,7 +104,7 @@ package com.adobe.cep {
 			{
 				callback = function(result:*):*{};
 			}
-			cepGlobal.evalScript(script, callback);
+			cepGlobal["evalScript"](script, callback);
 		}
 
 		/**
@@ -119,7 +125,7 @@ package com.adobe.cep {
 		 * @return A \c #HostCapabilities object.
 		 */
 		public static function getHostCapabilities() : HostCapabilities {
-			return JSON.parse(cepGlobal.getHostCapabilities()) as HostCapabilities;
+			return new HostCapabilities(JSON.parse(cepGlobal["getHostCapabilities"]()));
 		}
 
 		/**
@@ -133,7 +139,7 @@ package com.adobe.cep {
 			{
 				event.data = JSON.stringify(event.data);
 			}
-			cepGlobal.dispatchEvent(event);
+			cepGlobal["dispatchEvent"](event);
 		}
 
 		/**
@@ -148,7 +154,7 @@ package com.adobe.cep {
 		 *		 Default is null.
 		 */
 		public static function addEventListener(type : String, listener : Function, obj : Object = null) : void {
-			cepGlobal.addEventListener(type, listener, obj);
+			cepGlobal["addEventListener"](type, listener, obj);
 		}
 
 		/**
@@ -160,7 +166,7 @@ package com.adobe.cep {
 		 *		  Default is null.
 		 */
 		public static function removeEventListener(type : String, listener : Function, obj : Object = null) : void {
-			cepGlobal.removeEventListener(type, listener, obj);
+			cepGlobal["removeEventListener"](type, listener, obj);
 		}
 
 		/**
@@ -175,7 +181,7 @@ package com.adobe.cep {
 		 *
 		 */
 		public static function requestOpenExtension(extensionId : String, params : String = "") : void {
-			cepGlobal.requestOpenExtension(extensionId, params);
+			cepGlobal["requestOpenExtension"](extensionId, params);
 		}
 
 		/**
@@ -191,7 +197,7 @@ package com.adobe.cep {
 		 */
 		public static function getExtensions(extensionIds : Array = null) : Array {
 			var extensionIdsStr:String = JSON.stringify(extensionIds);
-			var extensionsStr:String = cepGlobal.getExtensions(extensionIdsStr);
+			var extensionsStr:String = cepGlobal["getExtensions"](extensionIdsStr);
 
 			var extensions:Array = JSON.parse(extensionsStr) as Array;
 			return extensions;
@@ -204,8 +210,8 @@ package com.adobe.cep {
 		 * @return A JavaScript object containing network preferences.
 		 */
 		public static function getNetworkPreferences() : NetworkPreferences {
-			var result:String = cepGlobal.getNetworkPreferences();
-			var networkPre:NetworkPreferences = JSON.parse(result) as NetworkPreferences;
+			var result:String = cepGlobal["getNetworkPreferences"]();
+			var networkPre:NetworkPreferences = new NetworkPreferences(JSON.parse(result));
 
 			return networkPre;
 		}
@@ -227,7 +233,7 @@ package com.adobe.cep {
 		 * @return An object containing the resource bundle information.
 		 */
 		public static function initResourceBundle() : Object {
-			var resourceBundle:Object = JSON.parse(cepGlobal.initResourceBundle());
+			var resourceBundle:Object = JSON.parse(cepGlobal["initResourceBundle"]());
 			var resElms:NodeList = document.querySelectorAll('[data-locale]');
 			for (var n:int = 0; n < resElms.length; n++)
 			{
@@ -264,7 +270,7 @@ package com.adobe.cep {
 		 * @return The file path.
 		 */
 		public static function dumpInstallationInfo() : String {
-			return cepGlobal.dumpInstallationInfo();
+			return cepGlobal["dumpInstallationInfo"]();
 		}
 
 		/**
@@ -377,7 +383,7 @@ package com.adobe.cep {
 		 * @return extension ID.
 		 */
 		public static function getExtensionID() : String {
-			return cepGlobal.getExtensionId();
+			return cepGlobal["getExtensionId"]();
 		}
 
 		/**
@@ -395,7 +401,7 @@ package com.adobe.cep {
 		 *	  </ul>\n
 		 */
 		public static function getScaleFactor() : Number {
-			return cepGlobal.getScaleFactor();
+			return cepGlobal["getScaleFactor"]();
 		}
 
 		/**
@@ -407,7 +413,7 @@ package com.adobe.cep {
 		 *
 		 */
 		public static function setScaleFactorChangedHandler(handler : Function) : void {
-			cepGlobal.setScaleFactorChangedHandler(handler);
+			cepGlobal["setScaleFactorChangedHandler"](handler);
 		}
 
 		/**
@@ -420,7 +426,7 @@ package com.adobe.cep {
 		 *
 		 */
 		public static function getCurrentApiVersion() : ApiVersion {
-			return JSON.parse(cepGlobal.getCurrentApiVersion()) as ApiVersion;
+			return new ApiVersion(JSON.parse(cepGlobal["getCurrentApiVersion"]()));
 		}
 
 		/**
@@ -454,7 +460,7 @@ package com.adobe.cep {
 			if ("string" != typeof menu){
 				return;
 			}
-			cepGlobal.invokeSync("setPanelFlyoutMenu", menu);
+			cepGlobal["invokeSync"]("setPanelFlyoutMenu", menu);
 		}
 
 		/**
@@ -476,8 +482,12 @@ package com.adobe.cep {
 			if (!getHostCapabilities().EXTENDED_PANEL_MENU) {
 				 return false;
 			}
-				var itemStatus:MenuItemStatus = new MenuItemStatus(menuItemLabel, enabled, checked);
-				cepGlobal.invokeSync("updatePanelMenuItem", JSON.stringify(itemStatus));
+			var itemStatus:Object = {
+				menuItemLabel:menuItemLabel,
+				enabled:enabled,
+				checked:checked
+			}
+			cepGlobal["invokeSync"]("updatePanelMenuItem", JSON.stringify(itemStatus));
 			
 			return true;
 		}
@@ -513,7 +523,7 @@ package com.adobe.cep {
 		 * </Menu>
 		 */
 		public static function setContextMenu(menu : String, callback : Function) : void {
-			cepGlobal.invokeAsync("setContextMenu", menu, callback);
+			cepGlobal["invokeAsync"]("setContextMenu", menu, callback);
 		}
 
 		/**
@@ -586,7 +596,7 @@ package com.adobe.cep {
 		 *
 		 */
 		public static function setContextMenuByJSON(menu : String, callback : Function) : void {
-			cepGlobal.invokeAsync("setContextMenuByJSON", menu, callback);
+			cepGlobal["invokeAsync"]("setContextMenuByJSON", menu, callback);
 		}
 
 		/**
@@ -599,8 +609,12 @@ package com.adobe.cep {
 		 * @param checked		True to select the item, false to deselect it.
 		 */
 		public static function updateContextMenuItem(menuItemID : String, enabled : Boolean, checked : Boolean) : void {
-			var itemStatus:ContextMenuItemStatus = new ContextMenuItemStatus(menuItemID, enabled, checked);
-			cepGlobal.invokeSync("updateContextMenuItem", JSON.stringify(itemStatus));
+			var itemStatus:Object = {
+				menuItemID:menuItemID,
+				enabled:enabled,
+				checked:checked
+			}
+			cepGlobal["invokeSync"]("updateContextMenuItem", JSON.stringify(itemStatus));
 		}
 
 		/**
@@ -611,7 +625,7 @@ package com.adobe.cep {
 		 * @return true if the extension window is visible; false if the extension window is hidden.
 		 */
 		public static function isWindowVisible() : Boolean {
-			return cepGlobal.invokeSync("isWindowVisible", "") as Boolean;
+			return cepGlobal["invokeSync"]("isWindowVisible", "") as Boolean;
 		}
 
 		/**
@@ -633,7 +647,7 @@ package com.adobe.cep {
 		 * @param height The new height
 		 */
 		public static function resizeContent(width : Number, height : Number) : void {
-			cepGlobal.resizeContent(width, height);
+			cepGlobal["resizeContent"](width, height);
 		}
 
 		/**
@@ -646,7 +660,7 @@ package com.adobe.cep {
 		 * @param callback the callback function
 		 */
 		public static function registerInvalidCertificateCallback(callback : Function) : void {
-			cepGlobal.registerInvalidCertificateCallback(callback);
+			cepGlobal["registerInvalidCertificateCallback"](callback);
 		}
 
 		/**
@@ -691,7 +705,7 @@ package com.adobe.cep {
 		 *
 		 */
 		public static function registerKeyEventsInterest(keyEventsInterest : String) : void {
-			cepGlobal.registerKeyEventsInterest(keyEventsInterest);
+			cepGlobal["registerKeyEventsInterest"](keyEventsInterest);
 		}
 
 		/**
@@ -703,7 +717,7 @@ package com.adobe.cep {
 		 * @param title The window title.
 		 */
 		public static function setWindowTitle(title : String) : void {
-			cepGlobal.invokeSync("setWindowTitle", title);
+			cepGlobal["invokeSync"]("setWindowTitle", title);
 		}
 
 		/**
@@ -715,7 +729,7 @@ package com.adobe.cep {
 		 * @return The window title.
 		 */
 		public static function getWindowTitle() : String {
-			return cepGlobal.invokeSync("getWindowTitle", "") as String;
+			return cepGlobal["invokeSync"]("getWindowTitle", "") as String;
 		}
 	}
 }

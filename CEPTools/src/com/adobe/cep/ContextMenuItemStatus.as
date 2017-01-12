@@ -15,10 +15,10 @@ package com.adobe.cep {
 		 *
 		 * @return MenuItemStatus object.
 		 */
-		function ContextMenuItemStatus(menuItemID : String = "", enabled : Boolean = false, checked : Boolean = false) {
-			this.menuItemID = menuItemID;
-			this.enabled = enabled;
-			this.checked = checked;
+		function ContextMenuItemStatus(info:Object) {
+			this.menuItemID = info.menuItemID;
+			this.enabled = info.enabled;
+			this.checked = info.checked;
 		}
 
 		public var menuItemID : String;

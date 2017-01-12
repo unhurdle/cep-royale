@@ -16,11 +16,11 @@ package com.adobe.cep {
 	 *
 	 * @return ApiVersion object.
 	 */
-		function ApiVersion(major:Number=0, minor:Number=0, micro:Number=0)
+		function ApiVersion(version:Object)
 		{
-			this.major = major;
-			this.minor = minor;
-			this.micro = micro;
+			this.major = version.major;
+			this.minor = version.minor;
+			this.micro = version.micro;
 		}
 		public var major:Number;
 		public var minor:Number;

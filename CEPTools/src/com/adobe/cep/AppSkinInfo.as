@@ -19,14 +19,14 @@ package com.adobe.cep {
 		 *
 		 * @return AppSkinInfo object.
 		 */
-		public function AppSkinInfo(baseFontFamily : String = "", baseFontSize : Number = NaN, appBarBackgroundColor : UIColor = null, panelBackgroundColor : UIColor = null, appBarBackgroundColorSRGB : UIColor = null, panelBackgroundColorSRGB : UIColor = null, systemHighlightColor : CepColor = null) {
-			this.baseFontFamily = baseFontFamily;
-			this.baseFontSize = baseFontSize;
-			this.appBarBackgroundColor = appBarBackgroundColor;
-			this.panelBackgroundColor = panelBackgroundColor;
-			this.appBarBackgroundColorSRGB = appBarBackgroundColorSRGB;
-			this.panelBackgroundColorSRGB = panelBackgroundColorSRGB;
-			this.systemHighlightColor = systemHighlightColor;
+		public function AppSkinInfo(info:Object) {
+			this.baseFontFamily = info["baseFontFamily"];
+			this.baseFontSize = info["baseFontSize"];
+			this.appBarBackgroundColor = info["appBarBackgroundColor"];
+			this.panelBackgroundColor = info["panelBackgroundColor"];
+			this.appBarBackgroundColorSRGB = info["appBarBackgroundColorSRGB"];
+			this.panelBackgroundColorSRGB = info["panelBackgroundColorSRGB"];
+			this.systemHighlightColor = info["systemHighlightColor"];
 		}
 
 		public var baseFontFamily : String;

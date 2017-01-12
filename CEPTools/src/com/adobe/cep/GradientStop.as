@@ -12,9 +12,9 @@ package com.adobe.cep {
 		 *
 		 * @return GradientStop object.
 		 */
-		function GradientStop(offset : Number = 0, rgbColor : CepColor = null) {
-		    this.offset = offset;
-    		this.rgbColor = rgbColor;
+		function GradientStop(info:Object) {
+		    this.offset = info.offset;
+    		this.rgbColor = new CepColor(info.rgbColor);
 		}
 
 		public var offset : Number;

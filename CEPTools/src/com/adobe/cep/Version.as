@@ -3,7 +3,11 @@ package com.adobe.cep {
 	 * @author harbs
 	 */
 	public class Version {
-		public function Version() {
+		public function Version(info:Object) {
+			this.major = info.major;
+			this.minor = info.minor;
+			this.micro = info.micro;
+			this.special = info.special;
 		}
 
 		/**

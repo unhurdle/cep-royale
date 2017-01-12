@@ -17,14 +17,14 @@ package com.adobe.cep {
 		 *
 		 * @return A new \c HostEnvironment object.
 		 */
-		public function HostEnvironment(appName : String = "", appVersion : String = "", appLocale : String = "", appUILocale : String = "", appId : String = "", isAppOnline : Boolean = false, appSkinInfo : AppSkinInfo = null) {
-			this.appName = appName;
-			this.appVersion = appVersion;
-			this.appLocale = appLocale;
-			this.appUILocale = appUILocale;
-			this.appId = appId;
-			this.isAppOnline = isAppOnline;
-			this.appSkinInfo = appSkinInfo;
+		public function HostEnvironment(env:Object) {
+			this.appName = env.appName;
+			this.appVersion = env.appVersion;
+			this.appLocale = env.appLocale;
+			this.appUILocale = env.appUILocale;
+			this.appId = env.appId;
+			this.isAppOnline = env.isAppOnline;
+			this.appSkinInfo = new AppSkinInfo(env.appSkinInfo);
 		}
 
 		public var appName : String;

@@ -15,11 +15,11 @@ package com.adobe.cep {
 		 *
 		 * @return A new \c GradientColor object.
 		 */
-		public function GradientColor(type:String = "linear", direction : Direction = null, numStops : int = 0, arrGradientStop : Array = null) {
-		    this.type = type;
-    		this.direction = direction;
-    		this.numStops = numStops;
-    		this.arrGradientStop = arrGradientStop;
+		public function GradientColor(info:Object) {
+		    this.type = info.type;
+    		this.direction = new Direction(info.direction);
+    		this.numStops = info.numStops;
+    		this.arrGradientStop = info.arrGradientStop;
 		}
 
 		public var type : String;

@@ -12,9 +12,9 @@ package com.adobe.cep {
 		 *
 		 * @return A new \c VersionRange object.
 		 */
-		function VersionRange(lowerBound : VersionBound = null, upperBound : VersionBound = null) {
-			this.lowerBound = lowerBound;
-			this.upperBound = upperBound;
+		function VersionRange(info:Object) {
+			this.lowerBound = new VersionBound(info.lowerBound);
+			this.upperBound = new VersionBound(info.upperBound);
 		}
 
 		public var lowerBound : VersionBound;
