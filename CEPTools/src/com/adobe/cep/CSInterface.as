@@ -66,7 +66,7 @@ package com.adobe.cep {
 
 
 		/** Closes this extension. */
-		public function closeExtension() : void {
+		public static function closeExtension() : void {
 			cepGlobal["closeExtension"]();
 		}
 
