@@ -1,2 +1,2 @@
-# cep-flexjs
-FlexJS support for CEP
+# cep-royale
+Apache Royale support for CEP

@@ -57,7 +57,7 @@ package com.adobe.cep {
 		}
 
 		/**
-		 * @flexjsignorecoercion com.adobe.cep.HostEnvironment
+		 * @royaleignorecoercion com.adobe.cep.HostEnvironment
 		 */
 		public static function getHostEnvironment() : HostEnvironment{
 			_hostEnvironment = new HostEnvironment(JSON.parse(cepGlobal["getHostEnvironment"]()));
@@ -120,7 +120,7 @@ package com.adobe.cep {
 		/**
 		 * Retrieves host capability information for the application
 		 * in which the extension is currently running.
-		 * @flexjsignorecoercion HostCapabilities
+		 * @royaleignorecoercion HostCapabilities
 		 *
 		 * @return A \c #HostCapabilities object.
 		 */
@@ -188,7 +188,7 @@ package com.adobe.cep {
 		 * Retrieves the list of extensions currently loaded in the current host application.
 		 * The extension list is initialized once, and remains the same during the lifetime
 		 * of the CEP session.
-		 * @flexjsignorecoercion Array
+		 * @royaleignorecoercion Array
 		 * 
 		 * @param extensionIds  Optional, an array of unique identifiers for extensions of interest.
 		 *		  If omitted, retrieves data for all extensions.
@@ -205,7 +205,7 @@ package com.adobe.cep {
 
 		/**
 		 * Retrieves network-related preferences.
-		 * @flexjsignorecoercion NetworkPreferences
+		 * @royaleignorecoercion NetworkPreferences
 		 *
 		 * @return A JavaScript object containing network preferences.
 		 */
@@ -418,7 +418,7 @@ package com.adobe.cep {
 
 		/**
 		 * Retrieves current API version.
-		 * @flexjsignorecoercion ApiVersion
+		 * @royaleignorecoercion ApiVersion
 		 *
 		 * Since 4.2.0
 		 *
