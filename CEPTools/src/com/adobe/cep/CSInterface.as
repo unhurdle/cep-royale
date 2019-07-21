@@ -18,7 +18,7 @@ package com.adobe.cep {
 		 *
 		 * @return A new \c CSInterface object
 		 */
-		function CSInterface() {
+		public function CSInterface() {
 		}
 
 		/**

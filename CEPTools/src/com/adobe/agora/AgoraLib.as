@@ -10,7 +10,7 @@ package  com.adobe.agora{
 		 * AgoraLib provides an interface to the Adobe Exchange service and Exchange plugin.
 		 * Please note that Vulcan.js is required.
 		 */
-		function AgoraLib() {
+		public function AgoraLib() {
 		}
 
 		static public const IS_ENTITLED : String = "IsEntitled";

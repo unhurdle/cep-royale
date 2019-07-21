@@ -27,7 +27,7 @@ package com.adobe.cep {
 		 *
 		 * @return A new \c Extension object.
 		 */
-		function Extension(info:Object) {
+		public function Extension(info:Object) {
 		    this.id = info.id;
     		this.name = info.name;
     		this.mainPath = info.mainPath;

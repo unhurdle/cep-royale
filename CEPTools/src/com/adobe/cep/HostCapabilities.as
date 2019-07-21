@@ -15,7 +15,7 @@ package com.adobe.cep {
 		 *
 		 * @return A new \c HostCapabilities object.
 		 */
-		function HostCapabilities(vals:Object) {
+		public function HostCapabilities(vals:Object) {
 			this.EXTENDED_PANEL_MENU = vals.EXTENDED_PANEL_MENU;
 			this.EXTENDED_PANEL_ICONS = vals.EXTENDED_PANEL_ICONS;
 			this.DELEGATE_APE_ENGINE = vals.DELEGATE_APE_ENGINE;

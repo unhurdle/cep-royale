@@ -16,7 +16,7 @@ package com.adobe.cep {
 	 *
 	 * @return ApiVersion object.
 	 */
-		function ApiVersion(version:Object)
+		public function ApiVersion(version:Object)
 		{
 			this.major = version.major;
 			this.minor = version.minor;

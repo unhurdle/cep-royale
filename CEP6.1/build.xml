@@ -1,103 +1,104 @@
 <?xml version="1.0" ?>
 <project name="CEP" default="main" basedir=".">
     <property environment="env"/>
-    <condition property="ROYALE_HOME" value="${env.ROYALE_HOME}">
-        <and>
+   <condition property="ROYALE_HOME" value="${env.ROYALE_HOME}" else="/Apache/royale-asjs">
+    <isset property="env.ROYALE_HOME" />
+   </condition>
+   <echo message="ROYALE_HOME: ${ROYALE_HOME}"/> 
+    <property file="${ROYALE_HOME}/env.properties"/>
+    <property file="${ROYALE_HOME}/build.properties"/>
+    <property name="FLEX_HOME" value="${ROYALE_HOME}"/>
+    
+    <property name="target.name" value="${ant.project.name}.swc" />
+    
+    <target name="main" depends="check-compiler,compile,copy-swc,test" description="Full build of ${ant.project.name}.swc">
+    </target>
+    
+    
+    <target name="copy-swc">
+        <!-- <copy file="${basedir}/target/${target.name}" tofile="${basedir}../../../libs/${target.name}" /> -->
+    </target>
+    
+    <target name="check-for-tests" >
+        <condition property="skip-tests" >
             <not>
-                <isset property="ROYALE_HOME" />
+                <available file="${basedir}/src/test/royale/build.xml" />
             </not>
-            <available file="${env.ROYALE_HOME}/royale-sdk-description.xml" type="file" />
-        </and>
-    </condition>
-    <condition property="ROYALE_HOME" value="/FlexSDK/FlexJSNightly">
-        <not>
-            <isset property="ROYALE_HOME" />
-        </not>
-    </condition>
-    
-    <!-- <property name="ROYALE_HOME" value="${basedir}/.." /> -->
-    
-    <condition property="FALCON_HOME" value="${env.FALCON_HOME}">
-        <and>
+        </condition>
+        <condition property="skip-tests" >
             <not>
-                <isset property="FALCON_HOME" />
+                <isset property="env.AIR_HOME" />
             </not>
-            <available file="${env.FALCON_HOME}/lib/compiler-mxmlc.jar" type="file" />
-        </and>
-    </condition>
+        </condition>
+    </target>
     
-    <condition property="FALCON_HOME" value="${ROYALE_HOME}/../royale-compiler/compiler">
-        <and>
-            <not>
-                <isset property="FALCON_HOME" />
-            </not>
-            <available file="${ROYALE_HOME}/../royale-compiler/compiler/lib/compiler-mxmlc.jar" type="file" />
-        </and>
-    </condition>
+    <target name="test" depends="check-for-tests" unless="skip-tests">
+        <ant dir="src/test/royale" />
+    </target>
     
-    <condition property="FALCON_HOME" value="${ROYALE_HOME}">
-        <and>
-            <not>
-                <isset property="FALCON_HOME" />
-            </not>
-            <available file="${ROYALE_HOME}/lib/compiler-mxmlc.jar" type="file" />
-        </and>
-    </condition>
-    
-    <condition property="FALCONJX_HOME" value="${env.FALCONJX_HOME}">
-        <and>
-            <not>
-                <isset property="FALCONJX_HOME" />
-            </not>
-            <available file="${env.FALCONJX_HOME}/lib/jsc.jar" type="file" />
-        </and>
-    </condition>
-    
-    <condition property="FALCONJX_HOME" value="${ROYALE_HOME}/js">
-        <and>
-            <not>
-                <isset property="FALCONJX_HOME" />
-            </not>
-            <available file="${ROYALE_HOME}/js/lib/jsc.jar" type="file" />
-        </and>
-    </condition>
-    
-    <condition property="FALCONJX_HOME" value="${ROYALE_HOME}/../royale-compiler/compiler-jx">
-        <and>
-            <not>
-                <isset property="FALCONJX_HOME" />
-            </not>
-            <available file="${ROYALE_HOME}/../royale-compiler/compiler-jx/lib/jsc.jar" type="file" />
-        </and>
-    </condition>
-    
-    <target name="main" depends="clean, preprocess, externc, postprocess, compc" />
+    <target name="compile" description="Compiles .as files into .swc">
+        <echo message="Compiling libs/${ant.project.name}.swc"/>
+        <echo message="ROYALE_HOME: ${ROYALE_HOME}"/>
+        <echo message="ROYALE_SWF_COMPILER_HOME: ${ROYALE_SWF_COMPILER_HOME}"/>
+        <echo message="ROYALE_COMPILER_HOME: ${ROYALE_COMPILER_HOME}"/>
+        
+        <java jar="${ROYALE_COMPILER_HOME}/lib/compc.jar" fork="true" >
+            <jvmarg value="-Xmx384m" />
+            <jvmarg value="-Dsun.io.useCanonCaches=false" />
+            <jvmarg value="-Droyalelib=${ROYALE_HOME}/frameworks" />
+            <arg value="+royalelib=${ROYALE_HOME}/frameworks" />
+            <arg value="+playerglobal.version=${playerglobal.version}" />
+            <arg value="+env.AIR_HOME=${env.AIR_HOME}" />
+            <arg value="-compiler.strict-xml=true" />
+            <arg value="-compiler.targets=SWF,JSRoyale" />
+            <arg value="-external-library-path+=${ROYALE_HOME}/frameworks/libs" />
+            <arg value="-external-library-path+=${ROYALE_HOME}/js/libs" />
+            <arg value="-js-external-library-path+=${ROYALE_HOME}/frameworks/js/libs" />
+            <arg value="-js-external-library-path+=${ROYALE_HOME}/js/libs" />
+            <arg value="-js-external-library-path+=typedefs" />
+            <arg value="-output=${basedir}/target/${target.name}" />
+            <arg value="-warn-public-vars=false"/>
+            <arg value="-load-config=${basedir}/compile-config.xml" />
+            <arg value="-js-load-config=${basedir}/js-compile-config.xml" />
+            <arg value="-js-output-optimization=skipAsCoercions"/>
 
-    <!-- we need to insert a line near the beginning of the file to make the
-         compiler happy. -->
-    <target name="preprocess">
-    </target>
-    
-    <target name="externc" >
-    </target>
-    
-    <target name="postprocess" >
-    </target>
-    
-    <target name="compc" >
-        <copy file="${basedir}/src/main/config/compile-as-config.xml" todir="${basedir}/target" />
-        <java jar="${FALCON_HOME}/lib/compiler-compc.jar" fork="true"
-            failonerror="true">
-            <arg value="+royalelib=externs/frameworks" />
-            <arg value="-debug" />
-            <arg value="-load-config=${basedir}/src/main/config/compile-as-config.xml" />
-            <arg value="-output=${basedir}/target/${ant.project.name}.swc" />
+            <arg value="-js-dynamic-access-unknown-members=true"/>
+            <arg value="-allow-private-constructors=true"/>
+            <arg value="-js-complex-implicit-coercions=false"/>
+            <arg value="-js-vector-index-checks=false"/>
+
         </java>
     </target>
     
-    <target name="clean">
-        <delete dir="${basedir}/target" failonerror="false" includeEmptyDirs="true"/>
+    <target name="check-compiler" depends="check-compiler-home,check-transpiler-home">
+        <path id="lib.path">
+            <fileset dir="${ROYALE_COMPILER_HOME}/lib" includes="compiler-royaleTasks.jar"/>
+        </path>
+        <taskdef resource="flexTasks.tasks" classpathref="lib.path"/>
     </target>
-    <target name="wipe" depends="clean">
+    
+    <target name="check-compiler-home"
+        description="Set ROYALE_SWF_COMPILER_HOME to point at the compiler.">
+        
+        <available file="${ROYALE_HOME}/lib/compiler-mxmlc.jar"
+        type="file"
+        property="ROYALE_SWF_COMPILER_HOME"
+        value="${ROYALE_HOME}"/>
+        
+        <fail message="ROYALE_SWF_COMPILER_HOME must be set to a folder with a lib sub-folder containing compiler-mxmlc.jar such as the compiler folder in royale-compiler repo or the root of a Royale SDK"
+        unless="ROYALE_SWF_COMPILER_HOME"/>
     </target>
+    
+    <target name="check-transpiler-home"
+        description="Set ROYALE_COMPILER_HOME to point at the cross-compiler.">
+        
+        <available file="${ROYALE_HOME}/js/lib/jsc.jar"
+        type="file"
+        property="ROYALE_COMPILER_HOME"
+        value="${ROYALE_HOME}/js"/>
+        
+        <fail message="ROYALE_COMPILER_HOME must be set to a folder with a lib sub-folder containing jsc.jar such as the compiler-jx folder in royale-compiler repo or the js folder of a Royale SDK"
+        unless="ROYALE_COMPILER_HOME"/>
+    </target>
+    
 </project>

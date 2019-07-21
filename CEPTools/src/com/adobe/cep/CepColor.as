@@ -17,7 +17,7 @@ package com.adobe.cep {
 		 *
 		 * @return A new RGBColor object.
 		 */
-		function CepColor(info:Object) {
+		public function CepColor(info:Object) {
 		    this.red = info.red;
     		this.green = info.green;
     		this.blue = info.blue;

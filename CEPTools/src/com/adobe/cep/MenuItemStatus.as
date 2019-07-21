@@ -15,7 +15,7 @@ package com.adobe.cep {
 		 *
 		 * @return MenuItemStatus object.
 		 */
-		function MenuItemStatus(info:Object) {
+		public function MenuItemStatus(info:Object) {
 			this.menuItemLabel = info.menuItemLabel;
 			this.enabled = info.enabled;
 			this.checked = info.checked;

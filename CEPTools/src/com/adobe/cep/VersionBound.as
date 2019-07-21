@@ -13,7 +13,7 @@ package com.adobe.cep {
 		 *
 		 * @return A new \c VersionBound object.
 		 */
-		function VersionBound(info:Object) {
+		public function VersionBound(info:Object) {
 			this.version = new Version(info.version);
 			this.inclusive = info.inclusive;
 		}

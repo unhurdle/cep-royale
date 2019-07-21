@@ -9,7 +9,7 @@ package  com.adobe.cep{
 		 * \c #CSInterface.getSystemPath() method.
 		 * @return A new \c SystemPath object.
 		 */
-		function SystemPath() {
+		public function SystemPath() {
 		}
 
 		/** The path to user data.  */

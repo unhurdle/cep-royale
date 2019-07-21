@@ -14,7 +14,7 @@ package com.adobe.cep{
 		 *
 		 * @return A new \c CSEvent object
 		 */
-		function CSEvent(type : String = "", scope : String = "", appId : String = "", extensionId : String = "") {
+		public function CSEvent(type : String = "", scope : String = "", appId : String = "", extensionId : String = "") {
 			this.type = type;
 			this.scope = scope || "GLOBAL";
 			this.appId = appId;

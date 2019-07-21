@@ -12,7 +12,7 @@ package com.adobe.cep {
 		 *
 		 * @return GradientStop object.
 		 */
-		function GradientStop(info:Object) {
+		public function GradientStop(info:Object) {
 		    this.offset = info.offset;
     		this.rgbColor = new CepColor(info.rgbColor);
 		}

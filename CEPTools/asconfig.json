@@ -1,0 +1,29 @@
+{
+    "config": "royale",
+    "type": "lib",
+    "compilerOptions": {
+        "debug": true,
+        "targets": [
+            "SWF",
+            "JSRoyale"
+        ],
+        "external-library-path": [
+            "typedefs",
+            "lib"
+        ],
+        "js-external-library-path": [
+            "typedefs",
+            "lib"
+        ],
+        "warn-public-vars": false,
+        "include-classes": [
+            "CEPTools"
+        ],
+        "include-sources": [
+            "src"
+        ],
+        "output": "target/CEPTools.swc"
+    },
+    "additionalOptions": "-js-output-optimization=skipAsCoercions -js-dynamic-access-unknown-members=true -allow-private-constructors=true -js-complex-implicit-coercions=false -js-vector-index-checks=false -js-default-initializers=false"
+
+}
