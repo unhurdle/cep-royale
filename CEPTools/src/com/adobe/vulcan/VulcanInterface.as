@@ -3,12 +3,21 @@ package  com.adobe.vulcan{
 	 * @author harbs
 	 */
 	public class VulcanInterface {
+
+		private static var _cepGlobal:CEPGlobal;
+		private static function get cepGlobal():CEPGlobal{
+			if(!_cepGlobal){
+				_cepGlobal = window["__adobe_cep__"];
+			}
+			return _cepGlobal;
+		}
 		/**
 		 * Gets all available application specifiers on the local machine.
 		 *
 		 * @return The array of all available application specifiers.
 		 */
-		static public function getTargetSpecifiers() : void {
+		static public function getTargetSpecifiers() : Array {
+			return JSON.parse(cepGlobal.invokeSync("vulcanGetTargetSpecifiers", "{}")) as Array;
 		}
 
 		/**
