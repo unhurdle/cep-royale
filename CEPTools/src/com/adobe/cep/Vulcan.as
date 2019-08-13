@@ -1,5 +1,4 @@
-package  com.adobe.vulcan{
-	import com.adobe.cep.CEPGlobal;
+package com.adobe.cep{
 
 	public class Vulcan {
 		
@@ -16,7 +15,7 @@ package  com.adobe.vulcan{
 		 * @return The array of all available application specifiers.
 		 */
 		static public function getTargetSpecifiers() : Array {
-			return JSON.parse(cepGlobal.invokeSync("vulcanGetTargetSpecifiers", "{}")) as Array;
+			return JSON.parse(cepGlobal["invokeSync"]("vulcanGetTargetSpecifiers", "{}")) as Array;
 		}
 
 		/**
@@ -45,7 +44,7 @@ package  com.adobe.vulcan{
 			params.focus = focus ? "true" : "false";
 			params.cmdLine = (cmdLine == 'undefined' || cmdLine == null) ? "" : cmdLine;
 			
-			return JSON.parse(cepGlobal.invokeSync("vulcanLaunchApp", JSON.stringify(params))).result;
+			return JSON.parse(cepGlobal["invokeSync"]("vulcanLaunchApp", JSON.stringify(params))).result;
 		}
 
 		/**
@@ -71,7 +70,7 @@ package  com.adobe.vulcan{
 			var params:Object = {};
 			params.targetSpecifier = targetSpecifier;
 			
-			return JSON.parse(cepGlobal.invokeSync("vulcanIsAppRunning", JSON.stringify(params))).result;
+			return JSON.parse(cepGlobal["invokeSync"]("vulcanIsAppRunning", JSON.stringify(params))).result;
 		}
 
 		/**
@@ -97,7 +96,7 @@ package  com.adobe.vulcan{
 			var params:Object = {};
 			params.targetSpecifier = targetSpecifier;
 			
-			return JSON.parse(cepGlobal.invokeSync("vulcanIsAppInstalled", JSON.stringify(params))).result as Boolean;
+			return JSON.parse(cepGlobal["invokeSync"]("vulcanIsAppInstalled", JSON.stringify(params))).result as Boolean;
 		}
 
 		/**
@@ -123,7 +122,7 @@ package  com.adobe.vulcan{
 			var params:Object = {};
 			params.targetSpecifier = targetSpecifier;
 			
-			return JSON.parse(cepGlobal.invokeSync("vulcanGetAppPath", JSON.stringify(params))).result as String;
+			return JSON.parse(cepGlobal["invokeSync"]("vulcanGetAppPath", JSON.stringify(params))).result as String;
 		}
 
 		/**
@@ -144,8 +143,8 @@ package  com.adobe.vulcan{
 			var params:Object = {};
 			params.type = type;
 			
-			cepGlobal.invokeAsync("vulcanAddMessageListener", JSON.stringify(params), callback);
-			// cepGlobal.invokeAsync("vulcanAddMessageListener", JSON.stringify(params), callback, obj);
+			cepGlobal["invokeAsync"]("vulcanAddMessageListener", JSON.stringify(params), callback);
+			// cepGlobal["invokeAsync"]("vulcanAddMessageListener", JSON.stringify(params), callback, obj);
 		}
 
 		/**
@@ -166,8 +165,8 @@ package  com.adobe.vulcan{
 			var params:Object = {};
 			params.type = type;
 			
-			cepGlobal.invokeAsync("vulcanRemoveMessageListener", JSON.stringify(params), callback);
-			// cepGlobal.invokeAsync("vulcanRemoveMessageListener", JSON.stringify(params), callback, obj);
+			cepGlobal["invokeAsync"]("vulcanRemoveMessageListener", JSON.stringify(params), callback);
+			// cepGlobal["invokeAsync"]("vulcanRemoveMessageListener", JSON.stringify(params), callback, obj);
 		}
 
 		/**
@@ -193,7 +192,7 @@ package  com.adobe.vulcan{
 			var payload:String = '{"vulcanMessage":{' + vulcanMessage.toString() + '}}'
 			trace('payload');
 			trace(payload);
-			cepGlobal.invokeSync("vulcanDispatchMessage", payload);
+			cepGlobal["invokeSync"]("vulcanDispatchMessage", payload);
 		}
 
 		/**

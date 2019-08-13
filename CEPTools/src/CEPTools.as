@@ -17,8 +17,8 @@ package {
 	import com.adobe.cep.Version;Version;
 	import com.adobe.cep.VersionBound;VersionBound;
 	import com.adobe.cep.VersionRange;VersionRange;
-	import com.adobe.vulcan.Vulcan;Vulcan;
-	import com.adobe.vulcan.VulcanMessage;VulcanMessage;
+	import com.adobe.cep.Vulcan;Vulcan;
+	import com.adobe.cep.VulcanMessage;VulcanMessage;
 
 	public class CEPTools {
 	}

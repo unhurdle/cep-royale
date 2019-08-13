@@ -1,4 +1,4 @@
-package  com.adobe.vulcan{
+package  com.adobe.cep{
 	/**
 	 * @author harbs
 	 */
