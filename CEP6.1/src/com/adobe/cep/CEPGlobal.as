@@ -77,7 +77,7 @@ package com.adobe.cep {
 			clientId;clientSecret;redirectUri;userAccountGuid;serviceAccountGuid;scope;return false;}
 		
 		public function initResourceBundle():String {return null;}
-		public function invokeAsync(command:String,payload:String,callback:Function):void {}
+		public function invokeAsync(command:String,payload:String,callback:Function,obj:Object=null):void {}
 		public function invokeSync(command:String,payload:String):* {}
 		public function registerInvalidCertificateCallback(callback:Function):* {}
 		public function registerKeyEventsInterest(keyEventsInterest:String):* {}
