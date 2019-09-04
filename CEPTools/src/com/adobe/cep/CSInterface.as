@@ -372,7 +372,7 @@ package com.adobe.cep {
 		 *	  </ul>\n
 		 */
 		public static function openURLInDefaultBrowser(url : String) : int {
- 			return cep.util["openURLInDefaultBrowser"](url);
+ 			return window["cep"]["util"]["openURLInDefaultBrowser"](url);
 		}
 
 		/**

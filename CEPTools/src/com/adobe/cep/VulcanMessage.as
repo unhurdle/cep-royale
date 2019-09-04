@@ -64,7 +64,7 @@ package  com.adobe.cep{
 		 * @param payload         A string containing the message payload.
 		 */
 		public function setPayload(payload : String) : void {
-			var str:String = cep.encoding.convertion.utf8_to_b64(payload);
+			var str:String = window["cep"]["encoding"]["convertion"].utf8_to_b64(payload);
 			str = "<payload>" + str + "</payload>";
 			this.data = "<data>" + str + "</data>";
 		}
@@ -78,7 +78,7 @@ package  com.adobe.cep{
 			var str:String = GetValueByKey(this.data, "payload");
 			if(str != null)
 			{
-				return cep.encoding.convertion.b64_to_utf8(str);
+				return window["cep"]["encoding"]["convertion"].b64_to_utf8(str);
 			}
 
 			return null;

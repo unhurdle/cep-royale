@@ -7,7 +7,7 @@ package  {
 	/**
 	 * @author harbs
 	 */
-	public class cep {
+	public class CEPClasses {
  		public static var fs:FS;
 		public static var process:Process;
 		public static var encoding:Encoding;

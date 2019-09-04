@@ -45,7 +45,7 @@
     </compiler>
     
     <include-classes>
-        <class>cep</class>
+        <class>CEPClasses</class>
     </include-classes>
 
 </royale-config>
